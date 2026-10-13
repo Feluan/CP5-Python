@@ -1,0 +1,6 @@
+PASSAGEM DE PLANTÃO
+Sistema: Plantão de TI
+Ocorrências abertas: 0
+Abertas com prioridade alta: 0
+
+Nenhuma pendência para o próximo plantão

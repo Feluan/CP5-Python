@@ -1,0 +1,9 @@
+Relatório de Uso de IA 
+
+1. Tratamento de Erros e Validação de JSON (Função carregar_ocorrencias)
+- Dificuldade: Garantir que o sistema não quebrasse caso o arquivo 'ocorrencias.json' estivesse ausente, corrompido ou contivesse uma estrutura de dados incorreta (por exemplo, um dicionário em vez de uma lista).
+- Auxílio da IA: Ajudou a estruturar o bloco try-except combinando FileNotFoundError e json.JSONDecodeError, além de adicionar a validação com `isinstance(dados, list)` para evitar falhas de execução e informar o usuário com segurança.
+
+2. Filtragem de Dados e Geração de Relatório (Função gerar_passagem)
+- Dificuldade: Percorrer a lista de ocorrências carregadas do JSON para filtrar apenas as que estão com status "aberto", contar quantas são de prioridade "alta" e montar dinamicamente a string de texto formatada para o arquivo 'passagem.txt'.
+- Auxílio da IA: Auxiliou na lógica de varredura com laços de repetição (loops for) para acumular contadores e concatenar o texto estruturado de forma legível para a próxima equipe de plantão.
