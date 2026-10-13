@@ -1,6 +1,25 @@
 PASSAGEM DE PLANTÃO
 Sistema: Plantão de TI
-Ocorrências abertas: 0
-Abertas com prioridade alta: 0
+Ocorrências abertas: 3
+Abertas com prioridade alta: 1
 
-Nenhuma pendência para o próximo plantão
+PENDÊNCIAS
+
+Pendência 1
+  Serviço: Conserto
+  Descrição: A máquina parou de funcionar.
+  Prioridade: alta
+  Próxima ação: Verificar se a máquina volta a funcionar.
+
+Pendência 2
+  Serviço: Reparo
+  Descrição: Alguns clientes relatam que as maquinas estão travando.
+  Prioridade: baixa
+  Próxima ação: Analisar a maquina para verificar se nao havera travamento.
+
+Pendência 3
+  Serviço: Catálogo de Produtos
+  Descrição: A busca não apresenta alguns produtos cadastrados no catálogo.
+  Prioridade: media
+  Próxima ação: Revisar os filtros e a indexação dos produtos.
+

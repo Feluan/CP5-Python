@@ -1,1 +1,3 @@
-teste — teste
+Conserto — Foi identificado que a máquina apresetava sintomas de não funcionamento.
+Reparo — Foram relatadas que as máquinas estavam travando por alguns usuários.
+Catálogo de Produtos — A busca não está retornando todos os produtos cadastrados.

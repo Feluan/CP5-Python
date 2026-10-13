@@ -1,9 +1,30 @@
 [
     {
-        "servico": "teste",
-        "descricao": "teste",
+        "servico": "Conserto",
+        "descricao": "A maquina parou de funcionar",
+        "prioridade": "alta",
+        "status": "aberto",
+        "proxima_acao": "Verificar se a maquina volta a funcionar"
+    },
+    {
+        "servico": "Reparo",
+        "descricao": "Alguns clientes relatam que as maquinas estão travando",
+        "prioridade": "baixa",
+        "status": "aberto",
+        "proxima_acao": "Analisar a maquina para verificar se nao havera travamento"
+    },
+    {
+        "servico": "Pagamento",
+        "descricao": "A confirmação do pagamento demora e o pedido fica aguardando atualização.",
         "prioridade": "alta",
         "status": "resolvido",
         "proxima_acao": "nenhuma"
+    },
+    {
+        "servico": "Catálogo de Produtos",
+        "descricao": "A busca não apresenta alguns produtos cadastrados no catálogo.",
+        "prioridade": "media",
+        "status": "aberto",
+        "proxima_acao": "Revisar os filtros e a indexação dos produtos."
     }
 ]
