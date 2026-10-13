@@ -63,3 +63,68 @@ def pedir_opcao(mensagem, validas):
         print("Valor inválido. Use: " + ", ".join(validas) + ".")
         valor = input(mensagem).strip().lower()
     return valor
+
+# Ocorrências
+
+def registrar_ocorrencia():
+    lista = carregar_ocorrencias()
+    if lista is None:
+        return
+
+    print("\n--- Registrar ocorrência ---")
+    servico = pedir_texto("Serviço afetado: ")
+    descricao = pedir_texto("Descrição (problema e efeito para o usuário): ")
+    prioridade = pedir_opcao("Prioridade (alta/media/baixa): ", PRIORIDADES)
+    status = pedir_opcao("Status (aberto/resolvido): ", STATUS)
+
+    if status == "resolvido":
+        proxima_acao = "nenhuma"
+    else:
+        proxima_acao = pedir_texto("Próxima ação para a próxima equipe: ")
+
+    ocorrencia = {
+        "servico": servico,
+        "descricao": descricao,
+        "prioridade": prioridade,
+        "status": status,
+        "proxima_acao": proxima_acao,
+    }
+
+    lista.append(ocorrencia)
+    salvar_ocorrencias(lista)
+    print("Ocorrência registrada com sucesso.")
+
+
+def consultar_ocorrencias():
+    lista = carregar_ocorrencias()
+    if lista is None:
+        return
+
+    print("\n--- Ocorrências ---")
+    if len(lista) == 0:
+        print("Não há ocorrências registradas.")
+        return
+
+    numero = 1
+    for item in lista:
+        print("Ocorrência " + str(numero))
+        print("  Serviço: " + str(item.get("servico", "")))
+        print("  Descrição: " + str(item.get("descricao", "")))
+        print("  Prioridade: " + str(item.get("prioridade", "")))
+        print("  Status: " + str(item.get("status", "")))
+        print("  Próxima ação: " + str(item.get("proxima_acao", "")))
+        print("")
+        numero += 1
+
+
+
+# Diário
+
+def registrar_diario():
+    print("\n--- Registrar anotação no diário ---")
+    servico = pedir_texto("Serviço: ")
+    anotacao = pedir_texto("Anotação: ")
+
+    with open(ARQ_DIARIO, "a", encoding="utf-8") as arquivo:
+        arquivo.write(servico + " — " + anotacao + "\n")
+    print("Anotação registrada.")
