@@ -129,7 +129,7 @@ def registrar_diario():
         arquivo.write(servico + " — " + anotacao + "\n")
     print("Anotação registrada.")
 
-    
+
 def consultar_diario():
     print("\n--- Diário ---")
 
@@ -145,3 +145,94 @@ def consultar_diario():
         print("Nenhuma anotação registrada")
     else:
         print(conteudo)
+
+# Passagem de plantão
+
+def gerar_passagem():
+    lista = carregar_ocorrencias()
+
+    if lista is None:
+        print("Passagem de plantão não gerada. O resumo anterior foi mantido.")
+        return
+
+    abertas = []
+
+    for item in lista:
+        if item.get("status") == "aberto":
+            abertas.append(item)
+
+    altas = 0
+
+    for item in abertas:
+        if item.get("prioridade") == "alta":
+            altas += 1
+
+    texto = "PASSAGEM DE PLANTÃO\n"
+    texto += "Sistema: " + NOME_SISTEMA + "\n"
+    texto += "Ocorrências abertas: " + str(len(abertas)) + "\n"
+    texto += "Abertas com prioridade alta: " + str(altas) + "\n\n"
+
+    if len(abertas) == 0:
+        texto += "Nenhuma pendência para o próximo plantão\n"
+    else:
+        texto += "PENDÊNCIAS\n\n"
+
+        numero = 1
+
+        for item in abertas:
+            texto += "Pendência " + str(numero) + "\n"
+            texto += "  Serviço: " + str(item.get("servico", "")) + "\n"
+            texto += "  Descrição: " + str(item.get("descricao", "")) + "\n"
+            texto += "  Prioridade: " + str(item.get("prioridade", "")) + "\n"
+            texto += "  Próxima ação: " + str(item.get("proxima_acao", "")) + "\n\n"
+
+            numero += 1
+
+    with open(ARQ_PASSAGEM, "w", encoding="utf-8") as arquivo:
+        arquivo.write(texto)
+
+    with open(ARQ_PASSAGEM, "r", encoding="utf-8") as arquivo:
+        conteudo = arquivo.read()
+
+    print("\n--- Passagem de plantão gerada ---")
+    print(conteudo)
+
+
+
+# Menu
+
+
+def mostrar_menu():
+    print("\n===== " + NOME_SISTEMA + " - Passagem de plantão =====")
+    print("1 - Registrar ocorrência")
+    print("2 - Consultar ocorrências")
+    print("3 - Registrar anotação no diário")
+    print("4 - Consultar diário")
+    print("5 - Gerar passagem de plantão")
+    print("6 - Sair")
+
+
+def main():
+    opcao = ""
+
+    while opcao != "6":
+        mostrar_menu()
+        opcao = input("Escolha uma opção: ").strip()
+
+        if opcao == "1":
+            registrar_ocorrencia()
+        elif opcao == "2":
+            consultar_ocorrencias()
+        elif opcao == "3":
+            registrar_diario()
+        elif opcao == "4":
+            consultar_diario()
+        elif opcao == "5":
+            gerar_passagem()
+        elif opcao == "6":
+            print("Encerrando o programa.")
+        else:
+            print("Opção inválida. Escolha um número de 1 a 6.")
+
+
+main()
