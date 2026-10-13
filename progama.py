@@ -128,3 +128,20 @@ def registrar_diario():
     with open(ARQ_DIARIO, "a", encoding="utf-8") as arquivo:
         arquivo.write(servico + " — " + anotacao + "\n")
     print("Anotação registrada.")
+
+    
+def consultar_diario():
+    print("\n--- Diário ---")
+
+    try:
+        with open(ARQ_DIARIO, "r", encoding="utf-8") as arquivo:
+            conteudo = arquivo.read()
+
+    except FileNotFoundError:
+        print("Nenhuma anotação registrada")
+        return
+
+    if conteudo.strip() == "":
+        print("Nenhuma anotação registrada")
+    else:
+        print(conteudo)
